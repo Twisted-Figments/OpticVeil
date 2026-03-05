@@ -41,7 +41,7 @@ public class Player_Movement : MonoBehaviour
     private void Rotate(Vector2 mouseScreenPos)
     {
         Vector2 distance = mouseScreenPos - (Vector2)transform.position;
-        float angle = MathF.Atan2(distance.y, distance.x) * MathF.Rad2Deg;
+        float angle = Mathf.Atan2(distance.y, distance.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 }
