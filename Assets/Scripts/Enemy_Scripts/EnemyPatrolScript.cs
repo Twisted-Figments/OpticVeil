@@ -38,12 +38,13 @@ public class EnemyPatrolScript : MonoBehaviour
         NMA = GetComponent<NavMeshAgent>();
         RB = GetComponent<Rigidbody2D>();    
         PFC = FindAnyObjectByType<PathfindingCells>();
-
     }
 
     private void Start()
     {
         Invoke("ResetTarget", 5);
+
+        ResetTarget();
     }
 
     public void GoToNextPoint(Vector2 GoTo)
@@ -53,7 +54,11 @@ public class EnemyPatrolScript : MonoBehaviour
 
     public void ResetTarget()
     {
-        PFC.GeneratePath(new Vector2(this.transform.position.x, this.transform.position.y), new Vector2(PatrolRoute[currentPatrolPosition].transform.position.x, PatrolRoute[currentPatrolPosition].transform.position.y));
+        float TempX = MathF.Round(this.transform.position.x);
+        float TempY = MathF.Round(this.transform.position.y);
+        PFC.GeneratePath(new Vector2(TempX, TempY), new Vector2(PatrolRoute[currentPatrolPosition].transform.position.x, PatrolRoute[currentPatrolPosition].transform.position.y));
+
+        //currentPatrolPosition++;
     }
     private void FixedUpdate()
     {
@@ -90,7 +95,7 @@ public class EnemyPatrolScript : MonoBehaviour
             case State.Patrol:
                 GoToNextPoint(currentTarget);
 
-                if (Vector2.Distance(transform.position, currentTarget) < LocationDistance)
+                if (Vector2.Distance(this.transform.position, currentTarget) < LocationDistance)
                 {
                     currentPosInArray = Mathf.Clamp(currentPosInArray + 1, 0, PFC.finalPath.Count - 1);
                     currentTarget = PFC.finalPath[currentPosInArray];
@@ -100,6 +105,7 @@ public class EnemyPatrolScript : MonoBehaviour
                         currentPatrolPosition++;
                         ResetTarget();
                     }
+                    ResetTarget();
                 }
 
                 else if (currentTarget == Vector2.zero)

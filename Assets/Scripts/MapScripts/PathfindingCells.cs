@@ -73,7 +73,7 @@ public class PathfindingCells : MonoBehaviour
     }
     
 
-    private void GenerateGrid()
+    public void GenerateGrid()
     {
 
         cells = new Dictionary<Vector2, Cell>();
