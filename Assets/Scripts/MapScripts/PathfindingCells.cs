@@ -59,6 +59,14 @@ public class PathfindingCells : MonoBehaviour
         
     }
 
+    public void ClearPath()
+    {
+        finalPath.Clear();
+        cellsToSearch.Clear();
+        searchedCells.Clear();
+        cells.Clear();
+    }
+
     public void GeneratePath(Vector2 StartPos ,Vector2 Position)
     {
         if (generatePath && !pathsGenerated)

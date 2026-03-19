@@ -9,11 +9,12 @@ TagManager:
   - Keycard
   - Wall
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -22,8 +24,9 @@ public class EnemyPatrolScript : MonoBehaviour
     public int runSpeed = 5;
     public float LocationDistance = 0.25f;
 
+    [SerializeField] Transform playerRef;
 
-    [SerializeField] private enum State
+    [SerializeField] public enum State
     {
         Idle,
         Patrol,
@@ -31,20 +34,42 @@ public class EnemyPatrolScript : MonoBehaviour
         Chaseing
     }
 
-    [SerializeField] private State currentState = State.Patrol;
+    [SerializeField] public State currentState = State.Patrol;
+
+    public void StateChange(int Pick)
+    {
+        switch(Pick)
+        {
+            case 1:
+                currentState = State.Idle;
+                break;
+            case 2:
+                currentState = State.Patrol;
+                break;
+            case 3:
+                currentState = State.Searching;
+                break;
+            case 4:
+                currentState = State.Chaseing;
+                break;
+            default:
+                return;
+        }
+    }
 
     private void Awake()
     {
         NMA = GetComponent<NavMeshAgent>();
         RB = GetComponent<Rigidbody2D>();    
         PFC = FindAnyObjectByType<PathfindingCells>();
+        playerRef = FindAnyObjectByType<Player_Movement>().transform;
     }
 
     private void Start()
     {
-        Invoke("ResetTarget", 5);
+        //Invoke("ResetTarget", 5);
 
-        ResetTarget();
+        ReturnToPatrol();
     }
 
     public void GoToNextPoint(Vector2 GoTo)
@@ -52,14 +77,39 @@ public class EnemyPatrolScript : MonoBehaviour
         Rotate(GoTo);
     }
 
-    public void ResetTarget()
+    public void FoundTarget(Vector2 TargetPos)
     {
         float TempX = MathF.Round(this.transform.position.x);
         float TempY = MathF.Round(this.transform.position.y);
-        PFC.GeneratePath(new Vector2(TempX, TempY), new Vector2(PatrolRoute[currentPatrolPosition].transform.position.x, PatrolRoute[currentPatrolPosition].transform.position.y));
+        currentPosInArray = 0;
+        PFC.pathsGenerated = false;
+        PFC.ClearPath();
+        PFC.GenerateGrid();
+        PFC.GeneratePath(new Vector2(TempX, TempY), TargetPos);
+    }
 
+    public void ResetTarget(Vector2 targetPos)
+    {
+        float TempX = MathF.Round(this.transform.position.x);
+        float TempY = MathF.Round(this.transform.position.y);
+        PFC.pathsGenerated = false;
+        PFC.ClearPath();
+        PFC.GenerateGrid();
+        PFC.GeneratePath(new Vector2(TempX, TempY), targetPos);
         //currentPatrolPosition++;
     }
+
+    public void ReturnToPatrol()
+    {
+        float TempX = MathF.Round(this.transform.position.x);
+        float TempY = MathF.Round(this.transform.position.y);
+        PFC.pathsGenerated = false;
+        PFC.ClearPath();
+        PFC.GenerateGrid();
+        PFC.GeneratePath(new Vector2(TempX, TempY), new Vector2(PatrolRoute[currentPatrolPosition].transform.position.x, PatrolRoute[currentPatrolPosition].transform.position.y));
+        //currentPatrolPosition++;
+    }
+
     private void FixedUpdate()
     {
         RB.linearVelocity = transform.right.normalized * runSpeed;
@@ -74,15 +124,6 @@ public class EnemyPatrolScript : MonoBehaviour
 
     private void Update()
     {
-        if(!PFC.pathsGenerated) { return; }
-        if (this.gameObject.transform.position.x == PFC.finalPath[currentPosInArray].x && this.gameObject.transform.position.x == PFC.finalPath[currentPosInArray].y)
-        {
-            currentPosInArray++;
-            if (currentPosInArray != PFC.finalPath.Count)
-            {
-                GoToNextPoint(PFC.finalPath[currentPosInArray]);
-            }
-        }
 
         if (!foundPlayer)
         {
@@ -95,30 +136,65 @@ public class EnemyPatrolScript : MonoBehaviour
             case State.Patrol:
                 GoToNextPoint(currentTarget);
 
-                if (Vector2.Distance(this.transform.position, currentTarget) < LocationDistance)
-                {
-                    currentPosInArray = Mathf.Clamp(currentPosInArray + 1, 0, PFC.finalPath.Count - 1);
-                    currentTarget = PFC.finalPath[currentPosInArray];
-                    if (currentPosInArray == PFC.finalPath.Count - 1)
-                    {
-                        currentPosInArray = 0;
-                        currentPatrolPosition++;
-                        ResetTarget();
-                    }
-                    ResetTarget();
-                }
-
-                else if (currentTarget == Vector2.zero)
-                {
-                    currentPosInArray = 0;
-                    currentTarget = PFC.finalPath[currentPosInArray];
-                }
+                if (!PFC.pathsGenerated) { return; }
+                
+                OverrideGoToList(PFC.finalPath[currentPosInArray]);
 
                 break;
             case State.Searching:
                 break;
             case State.Chaseing:
+
+                GoToNextPoint(currentTarget);
+
+                if (!PFC.pathsGenerated) { return; }
+
+                OverrideGoToList(playerRef.position);
+
+                Debug.Log("Being called");
+
+                // IF WE DON'T WANT THE ENEMY TO CHASE THE PLAYER - 
+
+                // ENEMY HAS RAYCAST TOWARDS PLAYER TO SEE IF VIEW IS HITTING A WALL
+
+                // ENEMY GETS DIRECTION TO PLAYER = enemy.POS - player.POS
+
+                // ENEMY COMPARES IT'S FORWARD DIRECTION TO THE ENEMY -> PLAYER DIRECTION AND MAKES SURE IT'S SMALLER THAN VIEW CONE = IF(VECTOR3.ANGLE(DIRTOPLAYER, ENEMYFORWARD) < VISIONVIEWCONESIZE)
+
+                // ENEMY CAN SEE PLAYER
                 break;
+        }
+    }
+
+    void OverrideGoToList(Vector2 target)
+    {
+        if (Vector2.Distance(this.transform.position, currentTarget) < LocationDistance)
+        {
+            Debug.Log("Read Distance");
+            //currentPosInArray = Mathf.Clamp(currentPosInArray + 1, 0, PFC.finalPath.Count - 1);
+            currentPosInArray++;
+            currentTarget = target;
+            if (currentPosInArray == PFC.finalPath.Count - 1)
+            {
+                if (currentPatrolPosition == PatrolRoute.Length - 1)
+                {
+                    currentPatrolPosition = 0;
+                    currentPosInArray = 0;
+                    ResetTarget(target);
+                    return;
+                }
+
+                Debug.Log("Read CurrentPosInArray");
+                currentPosInArray = 0;
+                currentPatrolPosition++;
+                ResetTarget(target);
+            }
+        }
+
+        else if (currentTarget == Vector2.zero)
+        {
+            currentPosInArray = 0;
+            currentTarget = PFC.finalPath[currentPosInArray];
         }
     }
 }
