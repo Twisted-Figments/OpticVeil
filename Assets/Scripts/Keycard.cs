@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.Android;
 
 public class Keycard : MonoBehaviour, IInteractable
 {
@@ -9,6 +10,8 @@ public class Keycard : MonoBehaviour, IInteractable
     public string KeycardID { get; private set; }
 
     public GameObject[] LockedDoor;
+
+    public GameObject[] Lock;
 
     void Start()
     {
@@ -36,9 +39,14 @@ public class Keycard : MonoBehaviour, IInteractable
         if (IsCollected = collected)
         {
             gameObject.SetActive(false);
+            foreach(GameObject locked in Lock)
+            {
+                locked.SetActive(false);
+            }
+
             foreach (GameObject door in LockedDoor)
             {
-                door.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+             door.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             }
         }
     }
