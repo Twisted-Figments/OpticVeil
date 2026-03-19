@@ -138,7 +138,7 @@ public class EnemyPatrolScript : MonoBehaviour
 
                 if (!PFC.pathsGenerated) { return; }
                 
-                OverrideGoToList(PFC.finalPath[currentPosInArray]);
+                OverrideGoToList(PFC.finalPath[currentPosInArray]); // breaks after first waypoint
 
                 break;
             case State.Searching:
