@@ -19,10 +19,14 @@ public class EnemyPatrolScript : MonoBehaviour
 
     NavMeshAgent NMA;
 
+    private bool behindWall = false;
+    public LayerMask WallLayer;
+
     private bool foundPlayer = false;
 
     public int runSpeed = 5;
     public float LocationDistance = 0.25f;
+    private Player_Movement PlayerPos;
 
     [SerializeField] Transform playerRef;
 
@@ -62,6 +66,7 @@ public class EnemyPatrolScript : MonoBehaviour
         NMA = GetComponent<NavMeshAgent>();
         RB = GetComponent<Rigidbody2D>();    
         PFC = FindAnyObjectByType<PathfindingCells>();
+        PlayerPos = FindAnyObjectByType<Player_Movement>();
         playerRef = FindAnyObjectByType<Player_Movement>().transform;
     }
 
@@ -82,9 +87,9 @@ public class EnemyPatrolScript : MonoBehaviour
         float TempX = MathF.Round(this.transform.position.x);
         float TempY = MathF.Round(this.transform.position.y);
         currentPosInArray = 0;
-        PFC.pathsGenerated = false;
         PFC.ClearPath();
         PFC.GenerateGrid();
+        PFC.pathsGenerated = false;
         PFC.GeneratePath(new Vector2(TempX, TempY), TargetPos);
     }
 
@@ -92,9 +97,9 @@ public class EnemyPatrolScript : MonoBehaviour
     {
         float TempX = MathF.Round(this.transform.position.x);
         float TempY = MathF.Round(this.transform.position.y);
-        PFC.pathsGenerated = false;
         PFC.ClearPath();
         PFC.GenerateGrid();
+        PFC.pathsGenerated = false;
         PFC.GeneratePath(new Vector2(TempX, TempY), targetPos);
         //currentPatrolPosition++;
     }
@@ -103,9 +108,9 @@ public class EnemyPatrolScript : MonoBehaviour
     {
         float TempX = MathF.Round(this.transform.position.x);
         float TempY = MathF.Round(this.transform.position.y);
-        PFC.pathsGenerated = false;
         PFC.ClearPath();
         PFC.GenerateGrid();
+        PFC.pathsGenerated = false;
         PFC.GeneratePath(new Vector2(TempX, TempY), new Vector2(PatrolRoute[currentPatrolPosition].transform.position.x, PatrolRoute[currentPatrolPosition].transform.position.y));
         //currentPatrolPosition++;
     }
@@ -124,16 +129,15 @@ public class EnemyPatrolScript : MonoBehaviour
 
     private void Update()
     {
-
-        if (!foundPlayer)
-        {
-
-        }
         switch(currentState)
         {
             case State.Idle:
                 break;
             case State.Patrol:
+
+                RayCastSearch();
+                if(foundPlayer == true) { currentState = State.Chaseing; FoundTarget(PlayerPos.transform.position); break; }
+
                 GoToNextPoint(currentTarget);
 
                 if (!PFC.pathsGenerated) { return; }
@@ -145,11 +149,14 @@ public class EnemyPatrolScript : MonoBehaviour
                 break;
             case State.Chaseing:
 
-                GoToNextPoint(currentTarget);
+                //GoToNextPoint(currentTarget);
 
                 if (!PFC.pathsGenerated) { return; }
+                RayCastSearch();
+                if (!foundPlayer) { currentState = State.Patrol; ReturnToPatrol(); break; }
 
                 OverrideGoToList(playerRef.position);
+                GoToNextPoint(currentTarget);
 
                 Debug.Log("Being called");
 
@@ -164,6 +171,13 @@ public class EnemyPatrolScript : MonoBehaviour
                 // ENEMY CAN SEE PLAYER
                 break;
         }
+    }
+
+    private void RayCastSearch()
+    {
+        behindWall = Physics2D.Linecast(transform.position, PlayerPos.transform.position, WallLayer);
+        foundPlayer = !behindWall;
+        if(behindWall) { return; }
     }
 
     void OverrideGoToList(Vector2 target)
@@ -195,6 +209,14 @@ public class EnemyPatrolScript : MonoBehaviour
         {
             currentPosInArray = 0;
             currentTarget = PFC.finalPath[currentPosInArray];
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(!behindWall)
+        {
+            Gizmos.DrawLine(transform.position, PlayerPos.transform.position);
         }
     }
 }
