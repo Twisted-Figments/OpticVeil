@@ -21,6 +21,8 @@ public class EnemyPatrolScript : MonoBehaviour
 
     private bool behindWall = false;
     public LayerMask WallLayer;
+    public int SearchRange;
+    private bool InRange = false;
 
     private bool foundPlayer = false;
 
@@ -136,13 +138,13 @@ public class EnemyPatrolScript : MonoBehaviour
             case State.Patrol:
 
                 RayCastSearch();
-                if(foundPlayer == true) { currentState = State.Chaseing; FoundTarget(PlayerPos.transform.position); break; }
+                if(foundPlayer == true && InRange) { currentState = State.Chaseing; FoundTarget(PlayerPos.transform.position); break; }
 
                 GoToNextPoint(currentTarget);
 
                 if (!PFC.pathsGenerated) { return; }
                 
-                OverrideGoToList(PFC.finalPath[currentPosInArray]); // breaks after first waypoint
+                OverrideGoToList(PFC.finalPath[currentPosInArray]);
 
                 break;
             case State.Searching:
@@ -153,20 +155,22 @@ public class EnemyPatrolScript : MonoBehaviour
 
                 if (!PFC.pathsGenerated) { return; }
                 RayCastSearch();
-                if (!foundPlayer) { currentState = State.Patrol; ReturnToPatrol(); break; }
+                if (!foundPlayer || !InRange) { currentState = State.Patrol; ReturnToPatrol(); break; }
 
-                OverrideGoToList(playerRef.position);
+                FoundTarget(playerRef.transform.position);
+
+                OverrideGoToList(playerRef.transform.position);
                 GoToNextPoint(currentTarget);
 
                 Debug.Log("Being called");
 
                 // IF WE DON'T WANT THE ENEMY TO CHASE THE PLAYER - 
 
-                // ENEMY HAS RAYCAST TOWARDS PLAYER TO SEE IF VIEW IS HITTING A WALL
+                // ENEMY HAS RAYCAST TOWARDS PLAYER TO SEE IF VIEW IS HITTING A WALL / DONE
 
-                // ENEMY GETS DIRECTION TO PLAYER = enemy.POS - player.POS
+                // ENEMY GETS DIRECTION TO PLAYER = enemy.POS - player.POS / Working on it
 
-                // ENEMY COMPARES IT'S FORWARD DIRECTION TO THE ENEMY -> PLAYER DIRECTION AND MAKES SURE IT'S SMALLER THAN VIEW CONE = IF(VECTOR3.ANGLE(DIRTOPLAYER, ENEMYFORWARD) < VISIONVIEWCONESIZE)
+                // ENEMY COMPARES IT'S FORWARD DIRECTION TO THE ENEMY -> PLAYER DIRECTION AND MAKES SURE IT'S SMALLER THAN VIEW CONE = IF(VECTOR3.ANGLE(DIRTOPLAYER, ENEMYFORWARD) < VISIONVIEWCONESIZE) // need to add view cone
 
                 // ENEMY CAN SEE PLAYER
                 break;
@@ -178,6 +182,10 @@ public class EnemyPatrolScript : MonoBehaviour
         behindWall = Physics2D.Linecast(transform.position, PlayerPos.transform.position, WallLayer);
         foundPlayer = !behindWall;
         if(behindWall) { return; }
+
+        InRange = Vector2.Distance(transform.position, PlayerPos.transform.position) < SearchRange;
+        if(!InRange) { return; }
+
     }
 
     void OverrideGoToList(Vector2 target)
@@ -194,14 +202,14 @@ public class EnemyPatrolScript : MonoBehaviour
                 {
                     currentPatrolPosition = 0;
                     currentPosInArray = 0;
-                    ResetTarget(target);
+                    ResetTarget(PatrolRoute[currentPatrolPosition].transform.position);
                     return;
                 }
 
                 Debug.Log("Read CurrentPosInArray");
                 currentPosInArray = 0;
                 currentPatrolPosition++;
-                ResetTarget(target);
+                ResetTarget(PatrolRoute[currentPatrolPosition].transform.position);
             }
         }
 
@@ -214,7 +222,7 @@ public class EnemyPatrolScript : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if(!behindWall)
+        if(!behindWall && InRange)
         {
             Gizmos.DrawLine(transform.position, PlayerPos.transform.position);
         }
