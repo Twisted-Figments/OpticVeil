@@ -3,6 +3,7 @@ using TreeEditor;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class RayCastAi : MonoBehaviour
@@ -20,8 +21,16 @@ public class RayCastAi : MonoBehaviour
     [SerializeField] private bool WallToTop;
     [SerializeField] private bool WallToBot;
 
-    private bool BehindWall;
-    private bool InRange;
+    [SerializeField] private bool TempDirectionChosen;
+
+    public bool BehindWall;
+    public bool InRange;
+    private bool InTrap = false;
+
+    public int SearchDistance;
+    public int HP = 10;
+
+
     [SerializeField] private bool WallInAngle;
     [SerializeField] private bool AvoidingWall;
 
@@ -61,7 +70,7 @@ public class RayCastAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        RayCastSearch();
 
         switch(currentAction)
         {
@@ -71,8 +80,38 @@ public class RayCastAi : MonoBehaviour
                 Searching();
                 break;
             case State.chaseing:
+                InChase();
                 break;
         }
+    }
+
+    private void RayCastSearch()
+    {
+        BehindWall = Physics2D.Linecast(transform.position, PlayerLoc.transform.position, WallLayer);
+        if(BehindWall) { 
+            currentAction = State.searching;
+            return; 
+        }
+
+        InRange = Vector2.Distance(transform.position, PlayerLoc.transform.position) < SearchDistance;
+        if(!InRange) {
+            currentAction = State.searching;
+            return; 
+        }
+        currentAction = State.chaseing;
+    }
+
+    private void InChase()
+    {
+        Rotate(PlayerLoc.transform.position);
+        RB.linearVelocity = transform.right.normalized * Speed;
+    }
+
+    private void Rotate(Vector2 LookAt)
+    {
+        Vector2 distance = LookAt - (Vector2)transform.position;
+        float angle = Mathf.Atan2(distance.y, distance.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
     private void Searching()
@@ -84,6 +123,11 @@ public class RayCastAi : MonoBehaviour
         WallToBot = Physics2D.Raycast(transform.position, -transform.up + transform.up * RayCastConeSize, RaycastDistance, WallLayer);
 
 
+
+        if(WallToLeft && WallToRight)
+        {
+            AvoidWall();
+        }
         if (WallToLeft || WallToRight || !WallToTop || !WallToBot)
         {
             AvoidWall();
@@ -105,6 +149,18 @@ public class RayCastAi : MonoBehaviour
         {
             TempSpeed = Speed * AvoidingWallMult; // add var
 
+            if(WallToLeft && WallToRight && WallToTop && WallToBot || WallToLeft && WallToRight)
+            {
+                if(transform.rotation.z < 0)
+                { 
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, -180));
+                }
+            }
+
             if(!WallToTop)
             {
                 Turning = -1;
@@ -113,7 +169,6 @@ public class RayCastAi : MonoBehaviour
             {
                 Turning = 1;
             }
-
 
             if (WallToLeft && WallToTop)
             {
@@ -147,6 +202,17 @@ public class RayCastAi : MonoBehaviour
         }*/
     }
 
+    private int RNDDirection()
+    {
+        int TempDirection = Random.Range(0, 2);
+        return TempDirection;
+    }
+
+    private void AllowNewDirection()
+    {
+        TempDirectionChosen = false;
+    }
+
     private void AvoidWall()
     {
         AvoidingWall = true;
@@ -173,6 +239,44 @@ public class RayCastAi : MonoBehaviour
 
         Gizmos.DrawLine(transform.position, transform.position + (transform.up * RaycastDistance));
         Gizmos.DrawLine(transform.position, transform.position + (-transform.up * RaycastDistance));
+
+        if (!BehindWall && InRange)
+        {
+            Gizmos.DrawLine(transform.position, PlayerLoc.transform.position);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Trap")
+        {
+            if(!InTrap)
+            {
+                InTrap = true;
+                InvokeRepeating("TrapDamage", 0, 1);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Trap")
+        {
+            if (InTrap)
+            {
+                InTrap = false;
+                CancelInvoke();
+            }
+        }
+    }
+
+    private void TrapDamage()
+    {
+        HP -= 2;
+        if(HP <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 

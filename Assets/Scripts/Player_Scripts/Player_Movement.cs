@@ -44,4 +44,20 @@ public class Player_Movement : MonoBehaviour
         float angle = Mathf.Atan2(distance.y, distance.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "HidingSpot")
+        {
+            this.gameObject.layer = 7;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "HidingSpot")
+        {
+            this.gameObject.layer = 9;
+        }
+    }
 }
