@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RayCastAi
   WallLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 0
   ThisGameObject: {fileID: 3776569819499653180}
   AllEnemies: []
   AllEnemiesList: []

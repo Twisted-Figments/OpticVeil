@@ -5,6 +5,19 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ground
+  - Wall
+  - Enemy
+  - Bullet
+  - TrapBase
+  - Trap
+  - EnemyAttack
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ground
+  - Water
+  - UI
   - Door
   - Keycard
   - Wall
@@ -13,28 +26,8 @@ TagManager:
   - HidingSpot
   - Trap
   - TrapBase
-<<<<<<< Updated upstream
   - SpeedBoost
-=======
   - EnemyAttack
->>>>>>> Stashed changes
-  layers:
-  - Default
-  - TransparentFX
-  - Ignore Raycast
-  - Ground
-  - Water
-  - UI
-  - Wall
-  - HidingSpot
-  - Enemy
-  - Player
-  - Trap
-  - TrapBase
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
