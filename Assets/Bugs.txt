@@ -1,0 +1,6 @@
+Blue Door Jammed
+Shoot Through walls
+Enemies didn't move
+Solid keycards
+Slow walkspeed
+Clipping into doors
