@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3103161817261582644}
   - component: {fileID: 4258002079686700030}
   - component: {fileID: 5336469976521561175}
-  m_Layer: 11
+  m_Layer: 13
   m_Name: Trap
   m_TagString: TrapBase
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 7924660713923925354}
   - component: {fileID: 5084895866855341173}
   - component: {fileID: 3090400766117644716}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: TrapAttack
   m_TagString: Trap
   m_Icon: {fileID: 0}

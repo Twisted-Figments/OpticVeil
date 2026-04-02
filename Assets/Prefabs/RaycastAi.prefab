@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 1133932127985011065}
   - component: {fileID: 6015593690436073527}
   - component: {fileID: 907619453876828990}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: RaycastAi
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RayCastAi
   WallLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2304
   ThisGameObject: {fileID: 3776569819499653180}
   AllEnemies: []
   AllEnemiesList: []
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPhysicalAttack
   PlayerLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 65536
   KnifeRotationObject: {fileID: 8876068865975130781}
   PlayerCloseEnough: 0
   KnifeSwingDistance: 2
