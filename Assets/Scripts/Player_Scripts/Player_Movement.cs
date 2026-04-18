@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class Player_Movement : MonoBehaviour
 {
+    public int HP = 10;
+
     public Vector2 mousePos;
     private Vector2 movementDirection;
     private Rigidbody2D rb;
@@ -52,6 +54,16 @@ public class Player_Movement : MonoBehaviour
         if(collision.tag == "HidingSpot")
         {
             this.gameObject.layer = 7;
+        }
+
+        if (collision.tag == "EnemyAttack")
+        {
+            HP -= 2;
+
+            if(HP <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

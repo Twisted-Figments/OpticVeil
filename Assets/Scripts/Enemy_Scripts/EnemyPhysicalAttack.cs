@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyPhysicalAttack : MonoBehaviour
 {
+    public Transform ParentTransform;
+
     public LayerMask PlayerLayer;
     public GameObject KnifeRotationObject;
 
@@ -13,7 +15,7 @@ public class EnemyPhysicalAttack : MonoBehaviour
 
     void Update()
     {
-        PlayerCloseEnough = Physics2D.Raycast(transform.position, transform.right * KnifeSwingDistance, PlayerLayer);
+        PlayerCloseEnough = Physics2D.Raycast(ParentTransform.position, ParentTransform.right * KnifeSwingDistance, PlayerLayer);
 
         if(PlayerCloseEnough == true)
         {
@@ -36,5 +38,10 @@ public class EnemyPhysicalAttack : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(ParentTransform.position, ParentTransform.position + (ParentTransform.right * KnifeSwingDistance));
     }
 }
