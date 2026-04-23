@@ -28,7 +28,7 @@ public class Player_Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(movementDirection.x * runSpeed * Time.deltaTime, movementDirection.y * TempSpeed * Time.deltaTime);
+        rb.linearVelocity = new Vector2(movementDirection.x * TempSpeed * Time.deltaTime, movementDirection.y * TempSpeed * Time.deltaTime);
     }
 
     public void OnMousePosition(InputAction.CallbackContext value)
