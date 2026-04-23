@@ -16,19 +16,19 @@ public class SpeedBoost : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            playerMovement.TempSpeed = playerMovement.runSpeed * 100;
+            playerMovement.TempSpeed = playerMovement.runSpeed * 2;
             Debug.Log("Speed increased");
             //make the sprite invisible
             StartCoroutine(Delay());
-            Debug.Log("delay ended");
-            playerMovement.TempSpeed = playerMovement.runSpeed;
-            Debug.Log("Speed decreased");
         }
     }
 
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(5);
+        Debug.Log("delay ended");
+        playerMovement.TempSpeed = playerMovement.runSpeed;
+        Debug.Log("Speed decreased");
     }
 
 }
