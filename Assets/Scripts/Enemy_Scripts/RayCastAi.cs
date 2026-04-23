@@ -164,6 +164,11 @@ public class RayCastAi : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
+    private void RotateAway(int RotDirection)
+    {
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, transform.rotation.z * RotDirection));
+    }
+
     private void Searching()
     {
         WallToLeft = Physics2D.Raycast(transform.position, transform.right + transform.up * RayCastConeSize, RaycastDistance, WallLayer);
@@ -172,6 +177,17 @@ public class RayCastAi : MonoBehaviour
         WallToTop = Physics2D.Raycast(transform.position, transform.up + transform.up * RayCastConeSize, RaycastDistance, WallLayer);
         WallToBot = Physics2D.Raycast(transform.position, -transform.up + transform.up * RayCastConeSize, RaycastDistance, WallLayer);
 
+        /*
+        if(WallToTop && !WallToBot)
+        {
+            RotateAway(-1);
+        }
+        if (!WallToTop && WallToBot)
+        {
+            RotateAway(1);
+        }
+        */
+        // work on maybe?
 
         if (WallToLeft && WallToRight)
         {
