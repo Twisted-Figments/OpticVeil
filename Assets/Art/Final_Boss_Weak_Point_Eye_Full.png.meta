@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: c3ad27ad3969c624ca5fe77ce9cd0b60
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7473855041226485363
+    second: Final_Boss_Weak_Point_Eye_Full_0
+  - first:
+      213: -1622381474989570988
+    second: Final_Boss_Weak_Point_Eye_Full_1
+  - first:
+      213: 1016005227817303788
+    second: Final_Boss_Weak_Point_Eye_Full_2
+  - first:
+      213: 4350393594411047597
+    second: Final_Boss_Weak_Point_Eye_Full_3
+  - first:
+      213: 5488848905904526859
+    second: Final_Boss_Weak_Point_Eye_Full_4
+  - first:
+      213: 9203727466956263810
+    second: Final_Boss_Weak_Point_Eye_Full_5
+  - first:
+      213: 80812319781427906
+    second: Final_Boss_Weak_Point_Eye_Full_6
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Final_Boss_Weak_Point_Eye_Full_0
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 959
+        width: 322
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d81deec2078874890800000000000000
+      internalID: -7473855041226485363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Final_Boss_Weak_Point_Eye_Full_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 479
+        width: 482
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 454821de4a42c79e0800000000000000
+      internalID: -1622381474989570988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Final_Boss_Weak_Point_Eye_Full_2
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 319
+        width: 2242
+        height: 2482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cee7df52f53991e00800000000000000
+      internalID: 1016005227817303788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Final_Boss_Weak_Point_Eye_Full_3
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 479
+        width: 482
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daa510cbce3bf5c30800000000000000
+      internalID: 4350393594411047597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Final_Boss_Weak_Point_Eye_Full_4
+      rect:
+        serializedVersion: 2
+        x: 2319
+        y: 959
+        width: 322
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b061b3eaffe4c2c40800000000000000
+      internalID: 5488848905904526859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Final_Boss_Weak_Point_Eye_Full_5
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 79
+        width: 562
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2811f652e553abf70800000000000000
+      internalID: 9203727466956263810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Final_Boss_Weak_Point_Eye_Full_6
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 79
+        width: 562
+        height: 482
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ca1c0e606a1f1100800000000000000
+      internalID: 80812319781427906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Final_Boss_Weak_Point_Eye_Full_0: -7473855041226485363
+      Final_Boss_Weak_Point_Eye_Full_1: -1622381474989570988
+      Final_Boss_Weak_Point_Eye_Full_2: 1016005227817303788
+      Final_Boss_Weak_Point_Eye_Full_3: 4350393594411047597
+      Final_Boss_Weak_Point_Eye_Full_4: 5488848905904526859
+      Final_Boss_Weak_Point_Eye_Full_5: 9203727466956263810
+      Final_Boss_Weak_Point_Eye_Full_6: 80812319781427906
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

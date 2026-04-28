@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: b2ee2f73d0a54364e8d254c7bf7bd0d1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8898015011529394212
+    second: Begin_New_Game_Highlight_0
+  - first:
+      213: 3158480299783107688
+    second: Begin_New_Game_Highlight_1
+  - first:
+      213: -252717791082944399
+    second: Begin_New_Game_Highlight_2
+  - first:
+      213: 4114966697778993031
+    second: Begin_New_Game_Highlight_3
+  - first:
+      213: 1829259080899102592
+    second: Begin_New_Game_Highlight_4
+  - first:
+      213: 1691881635305896909
+    second: Begin_New_Game_Highlight_5
+  - first:
+      213: 3906515042368029989
+    second: Begin_New_Game_Highlight_6
+  - first:
+      213: -7163404214049124408
+    second: Begin_New_Game_Highlight_7
+  - first:
+      213: -6483214998494096338
+    second: Begin_New_Game_Highlight_8
+  - first:
+      213: 4901398600305791075
+    second: Begin_New_Game_Highlight_9
+  - first:
+      213: 6942930611508189948
+    second: Begin_New_Game_Highlight_10
+  - first:
+      213: -454641125984250
+    second: Begin_New_Game_Highlight_11
+  - first:
+      213: -1909002286704347824
+    second: Begin_New_Game_Highlight_12
+  - first:
+      213: -4761076712628429359
+    second: Begin_New_Game_Highlight_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_0
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 299
+        width: 202
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4288d4062891c7b70800000000000000
+      internalID: 8898015011529394212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_1
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 299
+        width: 202
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86434aa291d25db20800000000000000
+      internalID: 3158480299783107688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_2
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 279
+        width: 202
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 178641a028a2e7cf0800000000000000
+      internalID: -252717791082944399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_3
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 299
+        width: 202
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 787ddabd86c4b1930800000000000000
+      internalID: 4114966697778993031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_4
+      rect:
+        serializedVersion: 2
+        x: 1319
+        y: 299
+        width: 202
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08706273175d26910800000000000000
+      internalID: 1829259080899102592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_5
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 19
+        width: 202
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcb3a622265ca7710800000000000000
+      internalID: 1691881635305896909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_6
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 19
+        width: 202
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5250112cbbab63630800000000000000
+      internalID: 3906515042368029989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_7
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 19
+        width: 202
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cfc01712d9769c90800000000000000
+      internalID: -7163404214049124408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_8
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 0
+        width: 202
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e245644fe4ef606a0800000000000000
+      internalID: -6483214998494096338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_9
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 19
+        width: 202
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 360d2d9ee04450440800000000000000
+      internalID: 4901398600305791075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_10
+      rect:
+        serializedVersion: 2
+        x: 1219
+        y: 19
+        width: 202
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfa912f1b9e3a5060800000000000000
+      internalID: 6942930611508189948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_11
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 19
+        width: 202
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6087f2d91826efff0800000000000000
+      internalID: -454641125984250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_12
+      rect:
+        serializedVersion: 2
+        x: 1739
+        y: 99
+        width: 202
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0553499d88cd185e0800000000000000
+      internalID: -1909002286704347824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Begin_New_Game_Highlight_13
+      rect:
+        serializedVersion: 2
+        x: 1819
+        y: 19
+        width: 42
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ddd56384f14dedb0800000000000000
+      internalID: -4761076712628429359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Begin_New_Game_Highlight_0: 8898015011529394212
+      Begin_New_Game_Highlight_1: 3158480299783107688
+      Begin_New_Game_Highlight_10: 6942930611508189948
+      Begin_New_Game_Highlight_11: -454641125984250
+      Begin_New_Game_Highlight_12: -1909002286704347824
+      Begin_New_Game_Highlight_13: -4761076712628429359
+      Begin_New_Game_Highlight_2: -252717791082944399
+      Begin_New_Game_Highlight_3: 4114966697778993031
+      Begin_New_Game_Highlight_4: 1829259080899102592
+      Begin_New_Game_Highlight_5: 1691881635305896909
+      Begin_New_Game_Highlight_6: 3906515042368029989
+      Begin_New_Game_Highlight_7: -7163404214049124408
+      Begin_New_Game_Highlight_8: -6483214998494096338
+      Begin_New_Game_Highlight_9: 4901398600305791075
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
